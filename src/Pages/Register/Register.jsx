@@ -15,6 +15,7 @@ const RegisterForm = () => {
   const [gender, setGender] = useState('male');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(false); // State variable for registration success
 
   // Event handlers for form fields
   const handleUsernameChange = (event) => setUsername(event.target.value);
@@ -47,14 +48,24 @@ const RegisterForm = () => {
       gender
     });
     // Perform registration logic here (e.g., API call)
+    setIsRegistered(true); // Set registration success
   };
+
+  if (isRegistered) {
+    return (
+      <div className="register-form-container">
+        <h1>Registration Successful</h1>
+        <p>Your registration was successful. You can now <a href="/">log in</a>.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="register-form-container">
       <h1 className="text-center mb-4">Register</h1>
       <form onSubmit={handleSubmit}>
         {/* Username input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="username" className="form-label">Username:</label>
           <input
             type="text"
@@ -65,7 +76,7 @@ const RegisterForm = () => {
           />
         </div>
         {/* Password input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="password" className="form-label">Password:</label>
           <div className="password-input-container">
             <input
@@ -79,7 +90,7 @@ const RegisterForm = () => {
           </div>
         </div>
         {/* Confirm Password input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="confirmPassword" className="form-label">Confirm Password:</label>
           <div className="password-input-container">
             <input
@@ -93,7 +104,7 @@ const RegisterForm = () => {
           </div>
         </div>
         {/* Full Name input */}
-        <div className="mb-3">
+        <div className="form-group full-width">
           <label htmlFor="fullName" className="form-label">Full Name:</label>
           <input
             type="text"
@@ -104,7 +115,7 @@ const RegisterForm = () => {
           />
         </div>
         {/* Email input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="email" className="form-label">Email:</label>
           <input
             type="email"
@@ -115,7 +126,7 @@ const RegisterForm = () => {
           />
         </div>
         {/* Phone input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="phone" className="form-label">Phone Number:</label>
           <input
             type="tel"
@@ -126,7 +137,7 @@ const RegisterForm = () => {
           />
         </div>
         {/* Date of Birth input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="dob" className="form-label">Date of Birth:</label>
           <input
             type="date"
@@ -137,7 +148,7 @@ const RegisterForm = () => {
           />
         </div>
         {/* Gender input */}
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="gender" className="form-label">Gender:</label>
           <select className="form-control" id="gender" value={gender} onChange={handleGenderChange}>
             <option value="male">Male</option>
@@ -149,11 +160,10 @@ const RegisterForm = () => {
       </form>
       {/* Login link */}
       <div className="login-container">
-        Already have an account?<a href="/login" className="login-link"> Log in</a>
+        Already have an account?<a href="/" className="login-link"> Log in</a>
       </div>
     </div>
   );
 };
 
 export default RegisterForm;
-  

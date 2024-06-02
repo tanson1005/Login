@@ -1,30 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;700&display=swap');
 
-/* Change colors and fonts */
-:root {
-  --body-color: #007bff;
-  --button-hover-color: #0056b3;
-  --border-color: #ccc;
-  --light-gray: #f9f9f9;
-  --dark-gray: #000;
-}
+/* Define variables */
+$body-color: #007bff;
+$button-hover-color: #0056b3;
+$border-color: #ccc;
+$light-gray: #f9f9f9;
+$dark-gray: #000;
 
 /* Set general font */
-body, .register-form-container, h1, label, input, button, select {
+body, 
+.register-form-container, 
+h1, 
+label, 
+input, 
+button, 
+select {
   font-family: 'Ubuntu Sans', sans-serif;
 }
 
 /* Set up the input password section */
 .password-input-container {
   position: relative;
-}
 
-.password-toggle-icon {
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer;
+  .password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
 }
 
 /* Set up the register form */
@@ -33,82 +37,103 @@ body, .register-form-container, h1, label, input, button, select {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--light-gray);
+  background-color: $light-gray;
   padding: 20px;
-  border: 1px solid var(--border-color);
+  border: 1px solid $border-color;
   border-radius: 5px;
-  max-width: 400px;
+  max-width: 800px;
   width: 100%;
-}
 
-.register-form-container h1 {
-  text-align: center;
-}
+  h1 {
+    text-align: center;
+    width: 100%;
+  }
 
-.register-form-container form {
-  display: flex;
-  flex-direction: column;
-}
+  form {
+    display: flex;
+    flex-wrap: wrap;
 
-.register-form-container label {
-  margin-bottom: 5px;
-}
+    .form-group {
+      width: 50%;
+      padding: 0 10px;
+      box-sizing: border-box;
 
-.register-form-container input,
-.register-form-container select {
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid var(--border-color);
-  border-radius: 3px;
-}
+      label {
+        margin-bottom: 5px;
+        display: block;
+      }
 
-.register-form-container button {
-  padding: 10px 15px;
-  background-color: var(--body-color);
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+      input, 
+      select {
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid $border-color;
+        border-radius: 3px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
 
-.register-form-container button:hover {
-  background-color: var(--button-hover-color);
-}
+    .full-width {
+      width: 100%;
+    }
 
-/* Set up login link */
-.register-form-container .login-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
+    button {
+      padding: 10px 15px;
+      background-color: $body-color;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
 
-.register-form-container .login-container .login-link {
-  text-decoration: none;
-  color: var(--dark-gray);
-}
+      &:hover {
+        background-color: $button-hover-color;
+      }
+    }
+  }
 
-.register-form-container .login-container .login-link:hover {
-  text-decoration: underline;
-  color: var(--body-color);
+  .login-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+
+    .login-link {
+      text-decoration: none;
+      color: $dark-gray;
+
+      &:hover {
+        text-decoration: underline;
+        color: $body-color;
+      }
+    }
+  }
 }
 
 /* Responsive styles for screens with a maximum width of 768px */
 @media (max-width: 768px) {
   .register-form-container {
     padding: 15px;
-  }
 
-  .register-form-container h1 {
-    font-size: 1.5rem;
-  }
+    h1 {
+      font-size: 1.5rem;
+    }
 
-  .register-form-container input,
-  .register-form-container select {
-    padding: 6px;
-  }
+    .form-group {
+      width: 100%;
+      padding: 0;
+    }
 
-  .register-form-container button {
-    padding: 8px 12px;
+    input,
+    select {
+      padding: 6px;
+    }
+
+    button {
+      padding: 8px 12px;
+    }
   }
 }
 
@@ -116,18 +141,23 @@ body, .register-form-container, h1, label, input, button, select {
 @media (max-width: 480px) {
   .register-form-container {
     padding: 10px;
-  }
 
-  .register-form-container h1 {
-    font-size: 1.2rem;
-  }
+    h1 {
+      font-size: 1.2rem;
+    }
 
-  .register-form-container input,
-  .register-form-container select {
-    padding: 4px;
-  }
+    .form-group {
+      width: 100%;
+      padding: 0;
+    }
 
-  .register-form-container button {
-    padding: 6px 10px;
+    input,
+    select {
+      padding: 4px;
+    }
+
+    button {
+      padding: 6px 10px;
+    }
   }
 }
